@@ -164,13 +164,13 @@ server <- shinyServer(function(input, output) {
         filter(Month >= input$date[1] & Month <= input$date[2]) %>% 
         filter(State == input$state, Industry == input$industry) %>%
         model(multiplicative = ETS(Turnover ~ error("M") + trend("A") +
-                               season("M"))) %>% 
+                                     season("M"))) %>% 
         forecast(h = input$forecast) %>%
-          autoplot(RETAIL %>% filter(Month >= input$date[1] & Month <= input$date[2])) +
-          labs(title = "Exponential Smoothing forecast using Holt's Winters as a Subseries Plot of Australia's Retail Turnover")
+        autoplot(RETAIL %>% filter(Month >= input$date[1] & Month <= input$date[2])) +
+        labs(title = "Exponential Smoothing forecast using Holt's Winters as a Subseries Plot of Australia's Retail Turnover")
     }
   })
-
+  
   output$plot6 <- renderPlot({
     if(input$arima == "ARIMA210"){
       RETAIL %>% 
@@ -227,7 +227,7 @@ server <- shinyServer(function(input, output) {
         forecast(h = input$forecast) %>%
         autoplot(RETAIL %>% filter(Month >= input$date[1] & Month <= input$date[2])) +
         labs(title = "Your own ARIMA forecast using a Subseries Plot of Australia's Retail Turnover")
-    
+      
     } 
     
   })

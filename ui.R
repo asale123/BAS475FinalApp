@@ -11,11 +11,6 @@ library(fpp3)
 library(dashboardthemes)
 library(shinythemes)
 library(rsconnect)
-rsconnect::setAccountInfo(name='andrewasale3',
-                          token='DCE012E5AC85A047CD44BF88A07F4940',
-                          secret='otSyLevgBv70aPlJMQarqZBecDSEUoqgSxWYnhil')
-rsconnect::deployApp('path/to/your/app')
-
 
 data("aus_retail")
 retail <- aus_retail
@@ -100,8 +95,8 @@ ui <- dashboardPage(dashboardHeader(title="Exploring Australian Retail"),
                           h3("Under the \"Let's Forecast!\" tab you will be able to forecast through many techniques", align = "center"),
                           h3("Under the \"Forecast Length?\" tab you can use the slider input to choose how many months in the future that you would like to forecast", align = "center"),
                           h3("Under the \"Basic Models!\" sub tab you will  be able to look at the NAIVE, Seasonal NAIVE, Drift, Linear, and the MEAN models of forecasting.", align = "center"),
-                          h3("Under the \"ETS\" sub tab you will be using Exponential Smoothing technique of both Holt's and Holt's Winters to get your forecast", align = "center"),
-                          h3("Under the \"ARIMA\" sub tab you will be using ARIMA models to get your forecast. There will be pre-made ARIMA models like the ARIMA210, but there will also be an AUTO ARIMA model and a Stepwise ARIMA Model. FInally you will also be able to make your own ARIMA model selecting the pdq through the number input and selecting \"ARIMA\"", align = "center")
+                          h3("Under the \"ETS\" sub tab you will be using Exponential Smoothing technique of both Holt's and Holt's Winters to get your forecast", align = "center"), 
+                          h3("Under the \"ARIMA\" sub tab you will be using ARIMA models to get your forecast. There will be pre-made ARIMA models like the ARIMA210, but there will also be an AUTO ARIMA model and a Stepwise ARIMA Model. Finally you will also be able to make your own ARIMA model selecting the pdq through the number input and selecting \"ARIMA\"", align = "center")
                         )),
                       
                       tabItem(
@@ -163,7 +158,7 @@ ui <- dashboardPage(dashboardHeader(title="Exploring Australian Retail"),
                                 status = "danger"
                               ),
                               plotOutput(outputId = "plot4"),
-                              ),
+                      ),
                       tabItem(tabName = "ST5",
                               checkboxGroupButtons(
                                 inputId = "ETS",
@@ -173,7 +168,7 @@ ui <- dashboardPage(dashboardHeader(title="Exploring Australian Retail"),
                                 status = "danger"
                               ),
                               plotOutput(outputId = "plot5"),
-                              ),
+                      ),
                       tabItem(tabName = "ST6",
                               checkboxGroupButtons(
                                 inputId = "arima",
